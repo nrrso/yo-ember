@@ -1,0 +1,30 @@
+<h1>Contact Page</h1>
+<form class="form-horizontal">
+  <div class="form-group {{if mailIsValid "has-success" "has-error"}}">
+    <label for="inputEmail3" class="col-sm-2 control-label">Email</label>
+    <div class="col-sm-10">
+      {{input class="form-control" placeholder="Your email address" type="email" autofocus="autofocus" value=model.email}}
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="inputSubject3" class="col-sm-2 control-label">Subject</label>
+    <div class="col-sm-10">
+      {{input class="form-control" placeholder="Please enter a subject" type="text" value=model.subject}}
+    </div>
+  </div>
+  <div class="form-group {{if messageIsValid "has-success" "has-error"}}">
+    <label for="inputSubject3" class="col-sm-2 control-label">Message</label>
+    <div class="col-sm-10">
+      {{textarea class="form-control" placeholder="Your message. (At least 5 characters)" rows="7" value=model.message}}
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button disabled={{isDisabled}} type="submit" class="btn btn-default" {{action 'sendMessage' model}} >Send my Message</button>
+    </div>
+  </div>
+</form>
+
+{{#if responseMessage}}
+  	<div class="alert alert-success">{{responseMessage}}</div>
+  {{/if}}
